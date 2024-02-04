@@ -21,13 +21,15 @@ module.exports = {
                exclude: /node_modules/,
             },
             {
-              exclude: /node_modules/,
-              test: /\.css$/i,
-               use: [
+                test: /\.css$/i,
+                use: [
                   "style-loader",
-                  "css-loader"
-               ]
-            },
+                  "css-loader",
+                  "postcss-loader", // Add this line
+                ],
+                exclude: /node_modules/,
+              },
+              
         ],
     },
     plugins: [
