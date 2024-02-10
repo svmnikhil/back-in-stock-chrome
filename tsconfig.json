@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "src/scripts", "src/scripts/content.ts"  ]
 }

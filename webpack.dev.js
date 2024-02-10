@@ -4,10 +4,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
 module.exports = {
-  entry:  {
-    popup: path.resolve('./src/index.tsx'), 
-    background: path.resolve('./src/background/background.ts'),
-    contentScript: path.resolve('./src/scripts/content.ts')
+  entry: {
+        popup: path.resolve('./src/index.tsx'), 
+        background: path.resolve('./src/background/background.ts'),
+        contentScript: path.resolve('./src/scripts/content.ts')
     },
   resolve: {
     alias: {
@@ -19,7 +19,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
   },
-  mode: "production",
+  mode: "development",
+  devtool: "inline-source-map",
   module: {
     rules: [
         { 
@@ -49,11 +50,10 @@ module.exports = {
     new CopyPlugin({
         patterns: [
             { 
-                from: "src",
+                from: path.resolve("src"),
+                to: path.resolve("dist")
             }
         ],
     }),
-    
-    // Add more instances of HtmlWebpackPlugin if you have other HTML files to generate
-],
+  ],
 };
