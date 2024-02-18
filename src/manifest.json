@@ -5,13 +5,33 @@
   "description": "Get instant purchase power against frequently sold out products. Beat those mega buy-bots!",
   "action": {
       "default_popup": "popup.html",
-      "default_title": "PreOrder Extension"
+      "default_title": "PreOrder"
   },
-  "permissions": ["activeTab", "scripting", "tabs"],
+  "icons": {
+    "16": "logos/inactive-16px-logo.png",
+    "48": "logos/inactive-48px-logo.png",
+    "128": "logos/inactive-128px-logo.png"
+  },
+  "oauth2": {
+    "client_id": "128472864983-78ub1u2up11vdnsuu3puveva5b0vgbne.apps.googleusercontent.com",
+    "scopes":[""]
+  },
+  "permissions": [
+    "activeTab", 
+    "scripting", 
+    "tabs",
+    "identity",
+    "storage"
+  ],
   "background": {
-    "service_worker": "background.js",
-    "type": "module"
+    "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.ts"]
+    }
+  ],
   "host_permissions": [
     "http://*/*",
     "https://*/*"
