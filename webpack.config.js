@@ -5,15 +5,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry:  {
-    popup: path.resolve('./src/index.tsx'), 
-    background: path.resolve('./src/background/background.ts'),
-    contentScript: path.resolve('./src/scripts/content.ts')
+      popup: path.resolve('./src/index.jsx'), 
+      background: path.resolve('./src/background/background.ts'),
+      contentScript: path.resolve('./src/scripts/content.ts')
     },
   resolve: {
     alias: {
       components: path.resolve(__dirname, 'src/'),
     },
-    extensions: ['.tsx', '.css', '.ts', '.js']
+    extensions: ['.jsx', '.css', '.ts', '.js']
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -23,7 +23,7 @@ module.exports = {
   module: {
     rules: [
         { 
-            test: /\.tsx|js$/, 
+            test: /\.jsx|js$/, 
             use: {
                 loader: "babel-loader",
                 options: {
@@ -48,9 +48,10 @@ module.exports = {
     }),
     new CopyPlugin({
         patterns: [
-            { 
-                from: "src",
-            }
+          { 
+            from: path.resolve("src"),
+            to: path.resolve("dist")
+        }
         ],
     }),
     

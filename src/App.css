@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 body {
-    width: 230px; /* Set the width you desire */
+    width: 300px; /* Set the width you desire */
     min-height: 100px; /* Set the minimum height you desire */
     display: flex;
     flex-direction: column;
-  }
+}
   
