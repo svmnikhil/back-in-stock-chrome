@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    width: 300px; /* Set the width you desire */
+    min-height: 100px; /* Set the minimum height you desire */
+    display: flex;
+    flex-direction: column;
+}
+  
