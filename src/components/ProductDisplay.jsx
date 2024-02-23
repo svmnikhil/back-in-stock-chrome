@@ -3,7 +3,6 @@ import '../App.css';
 
 export default function ProductDisplay({data, preOrderSubmitted}) {
 
-
     const preOrderSent = () => {
         preOrderSubmitted = true;
         console.log("this is the state of preOrder Sent: ", preOrderSubmitted);

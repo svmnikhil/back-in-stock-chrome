@@ -5,6 +5,7 @@ import ProductDisplay from './components/ProductDisplay';
 import OrderSent from './components/OrderSent';
 import NoProduct from './components/NoProduct';
 
+
 function App() {
   const [mail, setEmail] = useState("blah-blah@xyz.com");
   const [data, setData] = useState({ productName: '', productImageSrc: '', companyName: '' });
@@ -12,7 +13,6 @@ function App() {
   const [preOrderSubmitted, setPreOrderSubmitted] = useState(false);
   const [noProductDetected, setNoProductDetected] = useState(false);
  
-
   useEffect(() => {
     // Define an async function inside the useEffect to use await
     const fetchData = async () => {
@@ -41,6 +41,38 @@ function App() {
   
     fetchData();
   }, []); 
+
+
+  useEffect(() => {
+
+    if(preOrderSubmitted) {
+      
+      const apiEndpoint = process.env.REACT_APP_POST_ENDPOINT;
+
+      const productData = {
+        "name": data.productName,
+        "user": 1,
+        "productImageUrl": data.productImageSrc,
+        "company": data.companyName
+      };
+
+      fetch(apiEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(productData)
+      }).then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error); //handle the error when a tracker already exists in the app but 
+      });
+    }
+  })
+
+  
 
   return (
     <div className='flex flex-col py-3 px-1 bg-white rounded-lg'>
